@@ -6,9 +6,9 @@ import "dotenv/config";
 import fs from "fs";
 import path from "path";
 
-import { clerkMiddleware } from "@clerk/express"
+import { clerkMiddleware } from "@clerk/express";
 
-import User from "./models/user.model.js"
+import User from "./models/user.model.js";
 import { connectDB } from "./lib/db.js";
 import { CronJob } from "cron";
 
@@ -20,11 +20,19 @@ const FRONTEND_URL = process.env.FRONTEND_URL;
 const publicDir = path.join(process.cwd(), "public");
 
 app.use(express.json());
-app.use(cors({origin:FRONTEND_URL, credentials:true}));
+app.use(cors({ origin: FRONTEND_URL, credentials: true }));
 app.use(clerkMiddleware());
 
-app.get("/health", (req,res) => {
-    res.status(200).json({ ok:true });
+app.get("/health", (req, res) => {
+    res.status(200).json({ ok: true });
+});
+
+// keeps the free-tier Render instance from spinning down due to inactivity
+// pings itself every 14 minutes
+const job = new CronJob("*/14 * * * *", function () {
+    fetch(`${process.env.RENDER_EXTERNAL_URL}/health`)
+        .then((res) => console.log("Cron ping status:", res.status))
+        .catch((err) => console.error("Cron ping failed:", err));
 });
 
 // if the public directory exists, serve the static files
