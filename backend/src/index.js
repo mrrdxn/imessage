@@ -29,7 +29,7 @@ app.get("/health", (req,res) => {
 
 // if the public directory exists, serve the static files
 // this is for the production build
-if(fs.existsSync(publicDir)){
+if (fs.existsSync(publicDir)){
     app.use(express.static(publicDir));
 
     app.get("/{*any}", (req, res, next) => {
@@ -41,5 +41,5 @@ app.listen(PORT, () => {
     connectDB();
     console.log("Server is up and running on PORT:", PORT);
 
-    if (process.env.NODE_ENV === "production")  job.start();
+    if (process.env.NODE_ENV === "production")  CronJob.start();
 });
