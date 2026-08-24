@@ -32,14 +32,6 @@ app.get("/health", (req, res) => {
     res.status(200).json({ ok: true });
 });
 
-// keeps the free-tier Render instance from spinning down due to inactivity
-// pings itself every 14 minutes
-const job = new CronJob("*/14 * * * *", function () {
-    fetch(`${process.env.RENDER_EXTERNAL_URL}/health`)
-        .then((res) => console.log("Cron ping status:", res.status))
-        .catch((err) => console.error("Cron ping failed:", err));
-});
-
 // if the public directory exists, serve the static files
 // this is for the production build
 if (fs.existsSync(publicDir)) {
