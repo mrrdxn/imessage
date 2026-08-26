@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { frameStyleFromUrl, getWallpaperById } from "../data/wallpapers";
 import { WallpaperContext } from "./wallpaper";
 
@@ -31,4 +31,12 @@ export function WallpaperProvider({ children }) {
       {children}
     </WallpaperContext.Provider>
   );
+}
+
+export function useWallpaper() {
+  const context = useContext(WallpaperContext);
+  if (!context) {
+    throw new Error("useWallpaper must be used within a WallpaperProvider");
+  }
+  return context;
 }
