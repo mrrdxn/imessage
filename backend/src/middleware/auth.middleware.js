@@ -6,7 +6,7 @@ export async function protectRoute(req, res,next) {
     try {
        const { userId } = getAuth(req);
        
-       if (userId) {
+       if (!userId) {
         res.status(401).json({ message: "Unauthorized" });
         return;
        }
