@@ -1,4 +1,3 @@
-import { useWallpaper } from "../context/wallpaper";
 import { useChatStore } from "../store/useChatStore";
 import { useSelectedConversation } from "../hooks/useSelectedConversation";
 import { useEffect } from "react";
@@ -8,8 +7,6 @@ import { MessageList } from "../components/chat/MessageList";
 import { ChatComposer } from "../components/chat/ChatComposer";
 
 function ChatPage() {
-  const { frameStyle } = useWallpaper();
-
   const getConversations = useChatStore((state) => state.getConversations);
   const getMessages = useChatStore((state) => state.getMessages);
   const getUsers = useChatStore((state) => state.getUsers);
@@ -34,7 +31,7 @@ function ChatPage() {
   }, [getMessages, activeConversationId, subscribeToMessages, unsubscribeFromMessages]);
 
   return (
-    <div className="flex h-dvh flex-col overflow-hidden p-2 sm:p-3 md:p-8" style={frameStyle}>
+    <div className="flex h-dvh flex-col overflow-hidden bg-surface p-2 sm:p-3 md:p-8">
       <div className="mx-auto flex w-full max-w-6xl flex-1 overflow-hidden rounded-2xl border border-border bg-background text-foreground">
         <ChatSidebar />
 

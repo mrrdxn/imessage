@@ -2,21 +2,23 @@ import useScrollToBottom from "../../hooks/useScrollToBottom";
 import { MessageBubble } from "./MessageBubble";
 import { NoConversationPlaceholder } from "./NoConversationPlaceholder";
 import { useSelectedConversation } from "../../hooks/useSelectedConversation";
+import { useWallpaper } from "../../context/wallpaper";
 
 export function MessageList() {
   const { activeConversation, activeConversationId } = useSelectedConversation();
+  const { frameStyle } = useWallpaper();
 
   const lastMessageId = activeConversation?.messages.at(-1)?.id;
   const messagesScrollRef = useScrollToBottom(activeConversationId, lastMessageId);
 
   return (
-    <div className="relative flex flex-1 flex-col overflow-hidden">
+    <div className="relative flex flex-1 flex-col overflow-hidden" style={frameStyle}>
       {activeConversation ? (
         <div
           ref={messagesScrollRef}
           className="flex flex-1 flex-col gap-1 overflow-y-auto overscroll-contain px-2 py-3 sm:px-3 sm:py-4"
         >
-          <p className="mb-3 text-center text-[11px] font-medium uppercase tracking-wide text-muted">
+          <p className="mx-auto mb-3 rounded-full bg-background/70 px-2.5 py-0.5 text-center text-[11px] font-medium uppercase tracking-wide text-muted backdrop-blur-sm">
             Today
           </p>
           {activeConversation.messages.map((message) => (
