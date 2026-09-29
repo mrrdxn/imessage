@@ -1,33 +1,97 @@
 export const WALLPAPER_SECTIONS = [
-  { id: "desktop", title: "Desktop" },
-  { id: "abstract", title: "Abstract" },
-];
-
-export const WALLPAPERS = [
-  // ---------- Desktop (your photos) ----------
-  { id: "redwood-whisper", category: "desktop", label: "Redwood Whisper", url: "/wallpapers/my-photo-1.jpg" },
-  { id: "ink-storm", category: "desktop", label: "Ink Storm", url: "/wallpapers/my-photo-2.jpg" },
-  { id: "golden-cove", category: "desktop", label: "Golden Cove", url: "/wallpapers/my-photo-3.jpg" },
-  { id: "shell-shock", category: "desktop", label: "Shell Shock", url: "/wallpapers/my-photo-4.jpg" },
-  { id: "pagoda-dreams", category: "desktop", label: "Pagoda Dreams", url: "/wallpapers/my-photo-5.jpg" },
-  { id: "spiral-gold", category: "desktop", label: "Spiral Gold", url: "/wallpapers/my-photo-6.jpg" },
-  { id: "cliff-dive", category: "desktop", label: "Cliff Dive", url: "/wallpapers/my-photo-7.jpg" },
-  { id: "marble-monument", category: "desktop", label: "Marble Monument", url: "/wallpapers/my-photo-8.jpg" },
-  { id: "deer-diaries", category: "desktop", label: "Deer Diaries", url: "/wallpapers/my-photo-9.jpg" },
-  { id: "snow-stag", category: "desktop", label: "Snow Stag", url: "/wallpapers/my-photo-10.jpg" },
-  { id: "film-beach", category: "desktop", label: "Film Beach", url: "/wallpapers/my-photo-11.jpg" },
-  { id: "grand-atrium", category: "desktop", label: "Grand Atrium", url: "/wallpapers/my-photo-12.jpg" },
-  { id: "alpenglow", category: "desktop", label: "Alpenglow", url: "/wallpapers/my-photo-13.jpg" },
-  { id: "wild-pasture", category: "desktop", label: "Wild Pasture", url: "/wallpapers/my-photo-14.jpg" },
-  { id: "sky-garden", category: "desktop", label: "Sky Garden", url: "/wallpapers/my-photo-15.jpg" },
-  { id: "pastel-street", category: "desktop", label: "Pastel Street", url: "/wallpapers/my-photo-16.jpg" },
-  { id: "reading-room", category: "desktop", label: "The Reading Room", url: "/wallpapers/my-photo-17.jpg" },
-  { id: "cosmic-dust", category: "desktop", label: "Cosmic Dust", url: "/wallpapers/my-photo-18.jpg" },
-
-  // ---------- Abstract ----------
-  { id: "macos-graphic", category: "abstract", label: "macOS Graphic", url: "/wallpapers/macos-graphic.svg" },
-  { id: "radial-yellow", category: "abstract", label: "Radial Yellow", url: "/wallpapers/radial-yellow.svg" },
-  { id: "radial-purple", category: "abstract", label: "Radial Purple", url: "/wallpapers/radial-purple.svg" },
-  { id: "radial-green", category: "abstract", label: "Radial Green", url: "/wallpapers/radial-green.svg" },
-  { id: "radial-blue", category: "abstract", label: "Radial Blue", url: "/wallpapers/radial-blue.svg" },
-  { id: "ventura-light", category: "abstract",
+    { id: "desktop", title: "Desktop" },
+    { id: "abstract", title: "Abstract" },
+  ];
+  
+  export const WALLPAPERS = [
+    {
+      id: "sonoma-horizon",
+      category: "desktop",
+      label: "Sonoma Horizon",
+      url: "/wallpapers/sonoma-horizon.jpg",
+    },
+    {
+      id: "redwoods",
+      category: "desktop",
+      label: "Redwoods",
+      url: "/wallpapers/redwoods.jpg",
+    },
+    {
+      id: "utah-evening",
+      category: "desktop",
+      label: "Utah Evening",
+      url: "/wallpapers/utah-evening.jpg",
+    },
+    {
+      id: "san-francisco-bay",
+      category: "desktop",
+      label: "San Francisco Bay",
+      url: "/wallpapers/san-francisco-bay.jpg",
+    },
+    {
+      id: "iceland-coast",
+      category: "desktop",
+      label: "Iceland Coast",
+      url: "/wallpapers/iceland-coast.jpg",
+    },
+    {
+      id: "new-york-midtown",
+      category: "desktop",
+      label: "New York Midtown",
+      url: "/wallpapers/new-york-midtown.jpg",
+    },
+    {
+      id: "macos-graphic",
+      category: "abstract",
+      label: "macOS Graphic",
+      url: "/wallpapers/macos-graphic.svg",
+    },
+    {
+      id: "radial-yellow",
+      category: "abstract",
+      label: "Radial Yellow",
+      url: "/wallpapers/radial-yellow.svg",
+    },
+    {
+      id: "radial-purple",
+      category: "abstract",
+      label: "Radial Purple",
+      url: "/wallpapers/radial-purple.svg",
+    },
+    {
+      id: "radial-green",
+      category: "abstract",
+      label: "Radial Green",
+      url: "/wallpapers/radial-green.svg",
+    },
+    {
+      id: "radial-blue",
+      category: "abstract",
+      label: "Radial Blue",
+      url: "/wallpapers/radial-blue.svg",
+    },
+    {
+      id: "ventura-light",
+      category: "abstract",
+      label: "Ventura",
+      url: "/wallpapers/ventura-light.svg",
+    },
+    {
+      id: "ventura-dark",
+      category: "abstract",
+      label: "Ventura Dark",
+      url: "/wallpapers/ventura-dark.svg",
+    },
+  ];
+  
+  export function frameStyleFromUrl(url) {
+    return {
+      backgroundImage: `url("${url}")`,
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+    };
+  }
+  
+  export function getWallpaperById(id) {
+    return WALLPAPERS.find((w) => w.id === id) ?? WALLPAPERS[0];
+  }
