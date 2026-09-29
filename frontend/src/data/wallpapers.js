@@ -1,3 +1,8 @@
+export const WALLPAPER_SECTIONS = [
+  { id: "desktop", title: "Desktop" },
+  { id: "abstract", title: "Abstract" },
+];
+
 export const WALLPAPERS = [
   // ---------- Desktop (your photos) ----------
   { id: "redwood-whisper", category: "desktop", label: "Redwood Whisper", url: "/wallpapers/my-photo-1.jpg" },
@@ -19,4 +24,10 @@ export const WALLPAPERS = [
   { id: "reading-room", category: "desktop", label: "The Reading Room", url: "/wallpapers/my-photo-17.jpg" },
   { id: "cosmic-dust", category: "desktop", label: "Cosmic Dust", url: "/wallpapers/my-photo-18.jpg" },
 
-  // ---------- Abstract ---------- (keep your existing abstract entries here)
+  // ---------- Abstract ----------
+  { id: "macos-graphic", category: "abstract", label: "macOS Graphic", url: "/wallpapers/macos-graphic.svg" },
+  { id: "radial-yellow", category: "abstract", label: "Radial Yellow", url: "/wallpapers/radial-yellow.svg" },
+  { id: "radial-purple", category: "abstract", label: "Radial Purple", url: "/wallpapers/radial-purple.svg" },
+  { id: "radial-green", category: "abstract", label: "Radial Green", url: "/wallpapers/radial-green.svg" },
+  { id: "radial-blue", category: "abstract", label: "Radial Blue", url: "/wallpapers/radial-blue.svg" },
+  { id: "ventura-light", category: "abstract",
